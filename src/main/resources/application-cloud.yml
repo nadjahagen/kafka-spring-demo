@@ -4,19 +4,19 @@ spring:
     kafka:
         properties:
             # CCloud broker connection parameters
-            #ssl.endpoint.identification.algorithm: https
-            #sasl.mechanism: PLAIN
-            #request.timeout.ms: 20000
-            #retry.backoff.ms: 500
-            #sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="ccloud_key" password="ccloud_secret";   (2)
-            #security.protocol: SASL_SSL
+            ssl.endpoint.identification.algorithm: https
+            sasl.mechanism: PLAIN
+            request.timeout.ms: 20000
+            retry.backoff.ms: 500
+            sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${CCLOUD_KEY}" password="${CCLOUD_SECRET}";
+            security.protocol: SASL_SSL
 
             # CCloud Schema Registry Connection parameter
-            schema.registry.url: http://localhost:18081
-            #basic.auth.credentials.source: USER_INFO   (4)
-            #schema.registry.basic.auth.user.info: sr_ccloud_key:sr_ccloud_key
+            schema.registry.url: ${SCHEMA_REGISTRY_ENDPOINT}
+            basic.auth.credentials.source: USER_INFO
+            schema.registry.basic.auth.user.info: ${SCHEMA_REGISTRY_KEY}:${SCHEMA_REGISTRY_SECRET}
         consumer:
-            bootstrap-servers: localhost:19092
+            bootstrap-servers: ${BOOTSTRAP_SERVER}
             group-id: group_id
             auto-offset-reset: earliest
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -24,6 +24,6 @@ spring:
             properties:
                 specific.avro.reader: true
         producer:
-            bootstrap-servers: localhost:19092
+            bootstrap-servers: ${BOOTSTRAP_SERVER}
             key-serializer: org.apache.kafka.common.serialization.StringSerializer
             value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
