@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class LightPeriodCommandConsumer {
     private final Logger logger = LoggerFactory.getLogger(LightPeriodCommandConsumer.class);
 
-    @KafkaListener(topics = "lightperiod-command-v1", groupId = "group_id")
+    @KafkaListener(topics = "lightperiod-command-v1")
     public void consume(LightMeasuredEvent event) {
         logger.info(String.format("Consumed message: %s", event.toString()));
     }

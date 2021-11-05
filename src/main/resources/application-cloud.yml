@@ -17,7 +17,7 @@ spring:
             schema.registry.basic.auth.user.info: ${SCHEMA_REGISTRY_KEY}:${SCHEMA_REGISTRY_SECRET}
         consumer:
             bootstrap-servers: ${BOOTSTRAP_SERVER}
-            group-id: group_id
+            group-id: Streetlight
             auto-offset-reset: earliest
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
