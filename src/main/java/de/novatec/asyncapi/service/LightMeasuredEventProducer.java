@@ -8,8 +8,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Producer {
-    private static final Logger logger = LoggerFactory.getLogger(Producer.class);
+public class LightMeasuredEventProducer {
+    private static final Logger logger = LoggerFactory.getLogger(LightMeasuredEventProducer.class);
     private static final String TOPIC = "lightmeasured-event-v1";
 
     @Autowired

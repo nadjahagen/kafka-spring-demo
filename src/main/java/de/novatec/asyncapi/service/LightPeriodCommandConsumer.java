@@ -7,10 +7,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Consumer {
-    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
+public class LightPeriodCommandConsumer {
+    private final Logger logger = LoggerFactory.getLogger(LightPeriodCommandConsumer.class);
 
-    @KafkaListener(topics = "lightmeasured-event-v1", groupId = "group_id")
+    @KafkaListener(topics = "lightperiod-command-v1", groupId = "group_id")
     public void consume(LightMeasuredEvent event) {
         logger.info(String.format("Consumed message: %s", event.toString()));
     }
